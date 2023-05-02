@@ -7,9 +7,9 @@ public class PlayerData : ScriptableObject
 {
     public float pHealth;
     public float pCurrentDirection;
-    //public Rigidbody2D pRigidBody;
     public float pSpeed;
     public float pJumpForce;
+    public GameObject pAmmo;
 
     public void ShowDebug()
     {
