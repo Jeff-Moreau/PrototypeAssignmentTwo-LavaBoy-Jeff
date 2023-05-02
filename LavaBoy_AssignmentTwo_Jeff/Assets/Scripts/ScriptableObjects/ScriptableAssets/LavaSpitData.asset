@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9097f14b2baa3d479fbd1386d33eba0, type: 3}
   m_Name: LavaSpitData
   m_EditorClassIdentifier: 
-  projectileSpeed: 20
+  projectileSpeed: 30
   projectileDamage: 5

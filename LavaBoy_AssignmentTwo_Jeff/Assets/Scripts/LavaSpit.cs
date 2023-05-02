@@ -23,13 +23,7 @@ public class LavaSpit : MonoBehaviour
         lavaSpitRotation = transform.position - mousePos;
         lavaRigidBody.velocity = new Vector2(lavaSpitDirection.x, lavaSpitDirection.y).normalized * lavaSpeed;
         rotation = Mathf.Atan2(lavaSpitRotation.y, lavaSpitRotation.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, 0, rotation + 90);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        transform.rotation = Quaternion.Euler(0, 0, rotation);
     }
 
     private void OnCollisionEnter2D(Collision2D other)

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbf9719130cf82b4cbd18d241dd12496, type: 3}
   m_Name: PlayerMainData
   m_EditorClassIdentifier: 
-  pHealth: 150
+  pHealth: 2200
   pCurrentDirection: 0
   pSpeed: 6
   pJumpForce: 500
