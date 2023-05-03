@@ -5,6 +5,7 @@ using UnityEngine;
 public class LavaSpit : MonoBehaviour
 {
     [SerializeField] private PlayerData playerData;
+    [SerializeField] private EnemyData enemyData;
     [SerializeField] private ProjectileData projectileData;
     [SerializeField] private Rigidbody2D lavaRigidBody;
 
@@ -31,6 +32,10 @@ public class LavaSpit : MonoBehaviour
         if (other.gameObject.layer == 0)
         {
             Destroy(gameObject);
+        }
+        if (other.gameObject.tag == "Enemy")
+        {
+            other.gameObject.GetComponent<Enemy>().enemyHealth -= 50;
         }
     }
 }
