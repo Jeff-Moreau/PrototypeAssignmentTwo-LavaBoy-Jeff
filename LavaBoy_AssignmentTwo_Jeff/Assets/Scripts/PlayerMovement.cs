@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
     private bool playerCanJump;
     private bool playerHitWall;
     private float currentSpeed;
+    private bool canMoveRight = true;
+    private bool canMoveLeft = true;
 
     // Start is called before the first frame update
     void Start()
@@ -24,14 +26,15 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.D))
-        {
-            transform.position += transform.right * (Time.deltaTime * currentSpeed);
-        }
-        else if (Input.GetKey(KeyCode.A))
-        {
-            transform.position -= transform.right * (Time.deltaTime * currentSpeed);
-        }
+            if (Input.GetKey(KeyCode.D) && canMoveRight)
+            {
+                transform.position += transform.right * (Time.deltaTime * currentSpeed);
+            }
+
+            if (Input.GetKey(KeyCode.A) && canMoveLeft)
+            {
+                transform.position -= transform.right * (Time.deltaTime * currentSpeed);
+            }
 
         if (Input.GetButtonDown("Jump") && playerCanJump)
         {
@@ -39,6 +42,19 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Wall" && collision.transform.position.x < transform.position.x + 960)
+        {
+            canMoveRight = false;
+        }
+        if (collision.gameObject.tag == "Wall" && collision.transform.position.x > transform.position.x + 960)
+        {
+            canMoveLeft = false;
+        }
+
+
+    }
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.name == "SolidGround")
@@ -50,6 +66,8 @@ public class PlayerMovement : MonoBehaviour
         {
             playerHitWall = true;
             Debug.Log("Touching WALL");
+            Debug.Log(collision.transform.position.x);
+            Debug.Log(transform.position.x + 960);
         }
     }
 
@@ -57,5 +75,14 @@ public class PlayerMovement : MonoBehaviour
     {
         playerCanJump = false;
         Debug.Log("NOT Touching Ground");
+
+       if (collision.gameObject.tag == "Wall" && collision.transform.position.x < transform.position.x + 960)
+        {
+            canMoveRight = true;
+        }
+        if (collision.gameObject.tag == "Wall" && collision.transform.position.x > transform.position.x + 960)
+        {
+            canMoveLeft = true;
+        }
     }
 }
