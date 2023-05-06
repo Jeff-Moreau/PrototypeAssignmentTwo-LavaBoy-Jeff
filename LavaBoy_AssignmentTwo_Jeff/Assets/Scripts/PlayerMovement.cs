@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     private float playerSpeed;
     private float playerJumpForce;
     private bool playerCanJump;
+    private bool playerOnGround;
     private bool playerHitWall;
     private float currentSpeed;
     private bool canMoveRight = true;
@@ -41,15 +42,18 @@ public class PlayerMovement : MonoBehaviour
             playerRiBo.AddForce(Vector2.up * playerJumpForce);
         }
 
-        if (Input.GetKey(KeyCode.P))
+        if (Input.GetMouseButtonDown(1) && playerRiBo.gravityScale >= 3)
         {
             playerRiBo.gravityScale = -3;
-            playerJumpForce = -playerJumpForce;
         }
-        if (Input.GetKey(KeyCode.O))
+
+        if (playerRiBo.gravityScale <= 0)
+        {
+            playerRiBo.gravityScale += Time.deltaTime;
+        }
+        else if (playerRiBo.gravityScale >=0 && playerRiBo.gravityScale < 3)
         {
             playerRiBo.gravityScale = 3;
-            playerJumpForce = playerJumpForce * 2;
         }
     }
 
@@ -70,6 +74,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.name == "SolidGround")
         {
+            playerOnGround = true;
             playerCanJump = true;
             Debug.Log("Touching Ground");
             Debug.Log(collision.transform.position.x);
@@ -88,6 +93,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
+        playerOnGround = false;
         playerCanJump = false;
         Debug.Log("NOT Touching Ground");
 
