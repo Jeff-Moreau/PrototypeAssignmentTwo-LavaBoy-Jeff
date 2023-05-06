@@ -40,6 +40,17 @@ public class PlayerMovement : MonoBehaviour
         {
             playerRiBo.AddForce(Vector2.up * playerJumpForce);
         }
+
+        if (Input.GetKey(KeyCode.P))
+        {
+            playerRiBo.gravityScale = -3;
+            playerJumpForce = -playerJumpForce;
+        }
+        if (Input.GetKey(KeyCode.O))
+        {
+            playerRiBo.gravityScale = 3;
+            playerJumpForce = playerJumpForce * 2;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -61,6 +72,10 @@ public class PlayerMovement : MonoBehaviour
         {
             playerCanJump = true;
             Debug.Log("Touching Ground");
+            Debug.Log(collision.transform.position.x);
+            Debug.Log(transform.position.x + 960);
+            Debug.Log(collision.transform.position.y);
+            Debug.Log(transform.position.y + 540);
         }
         if (collision.gameObject.name == "Wall")
         {
