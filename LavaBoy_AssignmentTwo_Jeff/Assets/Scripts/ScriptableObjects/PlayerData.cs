@@ -5,14 +5,18 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Player Data", fileName = "PlayerData")]
 public class PlayerData : ScriptableObject
 {
-    public float pHealth;
+    public float pHealthMax = 2200;
+    public float pHealthSolid = 1800;
+    public float pHealthCurrent;
     public float pCurrentDirection;
-    public float pSpeed;
+    public float pSpeed = 6;
+    public float pSpeedCurrent;
     public float pJumpForce;
+    public float pHealthReductionSpeed = 3;
     public GameObject pAmmo;
 
     public void ShowDebug()
     {
-        Debug.Log("<color=green>Player Current Health: </color>" + pHealth);
+        Debug.Log("<color=green>Player Current Health: </color>" + pHealthCurrent);
     }
 }

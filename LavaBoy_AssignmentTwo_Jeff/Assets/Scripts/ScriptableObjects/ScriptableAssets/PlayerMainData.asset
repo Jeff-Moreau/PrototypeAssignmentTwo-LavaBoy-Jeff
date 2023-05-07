@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbf9719130cf82b4cbd18d241dd12496, type: 3}
   m_Name: PlayerMainData
   m_EditorClassIdentifier: 
-  pHealth: 2200
+  pHealthMax: 2200
+  pHealthSolid: 1800
+  pHealthCurrent: 1800
   pCurrentDirection: 0
   pSpeed: 6
+  pSpeedCurrent: 3
   pJumpForce: 650
+  pHealthReductionSpeed: 3
   pAmmo: {fileID: 3531331950260346512, guid: 74dfd24696beab44f88f9c2530e9fe75, type: 3}

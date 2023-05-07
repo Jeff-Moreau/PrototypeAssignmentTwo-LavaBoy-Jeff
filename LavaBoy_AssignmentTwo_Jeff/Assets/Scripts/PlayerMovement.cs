@@ -7,21 +7,16 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private PlayerData playerData;
     [SerializeField] private Rigidbody2D playerRiBo;
 
-    private float playerSpeed;
-    private float playerJumpForce;
     private bool playerCanJump;
     private bool playerOnGround;
     private bool playerHitWall;
-    private float currentSpeed;
     private bool canMoveRight = true;
     private bool canMoveLeft = true;
 
     // Start is called before the first frame update
     void Start()
     {
-        playerSpeed = playerData.pSpeed;
-        currentSpeed = playerSpeed;
-        playerJumpForce = playerData.pJumpForce;
+        playerData.pSpeedCurrent = playerData.pSpeed;
     }
 
     // Update is called once per frame
@@ -29,20 +24,20 @@ public class PlayerMovement : MonoBehaviour
     {
             if (Input.GetKey(KeyCode.D) && canMoveRight)
             {
-                transform.position += transform.right * (Time.deltaTime * currentSpeed);
+                transform.position += transform.right * (Time.deltaTime * playerData.pSpeedCurrent);
             }
 
             if (Input.GetKey(KeyCode.A) && canMoveLeft)
             {
-                transform.position -= transform.right * (Time.deltaTime * currentSpeed);
+                transform.position -= transform.right * (Time.deltaTime * playerData.pSpeedCurrent);
             }
 
         if (Input.GetButtonDown("Jump") && playerCanJump)
         {
-            playerRiBo.AddForce(Vector2.up * playerJumpForce);
+            playerRiBo.AddForce(Vector2.up * playerData.pJumpForce);
         }
 
-        if (Input.GetMouseButtonDown(1) && playerRiBo.gravityScale >= 3)
+        if (Input.GetMouseButtonDown(1) && playerRiBo.gravityScale >= 3 && playerOnGround)
         {
             playerRiBo.gravityScale = -3;
         }
@@ -54,6 +49,23 @@ public class PlayerMovement : MonoBehaviour
         else if (playerRiBo.gravityScale >=0 && playerRiBo.gravityScale < 3)
         {
             playerRiBo.gravityScale = 3;
+        }
+
+        if (playerData.pHealthCurrent <= 2100 && playerData.pHealthCurrent > 2000)
+        {
+            playerData.pSpeedCurrent = playerData.pSpeed - (playerData.pSpeed * 0.1f);
+        }
+        else if (playerData.pHealthCurrent <= 2000 && playerData.pHealthCurrent > 1900)
+        {
+            playerData.pSpeedCurrent = playerData.pSpeed - (playerData.pSpeed * 0.225f);
+        }
+        else if (playerData.pHealthCurrent <= 1900 && playerData.pHealthCurrent > 1850)
+        {
+            playerData.pSpeedCurrent = playerData.pSpeed - (playerData.pSpeed * 0.35f);
+        }
+        else if (playerData.pHealthCurrent <= 1850)
+        {
+            playerData.pSpeedCurrent = playerData.pSpeed - (playerData.pSpeed * 0.5f);
         }
     }
 
