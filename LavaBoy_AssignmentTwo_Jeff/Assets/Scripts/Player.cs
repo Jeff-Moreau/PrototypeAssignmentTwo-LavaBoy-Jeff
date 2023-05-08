@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
         if (showDebugs)
         {
             playerData.ShowDebug();
-            Debug.Log("Player Current Position: " + currentPosition);
+           // Debug.Log("Player Current Position: " + currentPosition);
         }
     }
 }

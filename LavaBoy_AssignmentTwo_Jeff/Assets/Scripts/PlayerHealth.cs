@@ -23,11 +23,12 @@ public class PlayerHealth : MonoBehaviour
         if (playerData.pHealthCurrent <= playerData.pHealthMax && playerData.pHealthCurrent > playerData.pHealthSolid)
         {
             playerData.pHealthCurrent -= (Time.deltaTime * playerData.pHealthReductionSpeed);
-            Debug.Log(playerData.pHealthCurrent);
+            //Debug.Log(playerData.pHealthCurrent);
         }
         else if (playerData.pHealthCurrent <= playerData.pHealthSolid)
         {
-            playerData.pHealthCurrent = playerData.pHealthSolid;
+            playerData.pHealthCurrent = playerData.pHealthMax;
+            transform.position = playerData.pStartPosition;
             Debug.Log("You are Dead");
         }
     }

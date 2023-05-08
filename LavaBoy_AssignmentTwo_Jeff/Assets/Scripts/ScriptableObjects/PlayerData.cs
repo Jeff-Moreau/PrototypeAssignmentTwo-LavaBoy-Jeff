@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 [CreateAssetMenu(menuName = "Player Data", fileName = "PlayerData")]
 public class PlayerData : ScriptableObject
@@ -14,6 +15,8 @@ public class PlayerData : ScriptableObject
     public float pJumpForce;
     public float pHealthReductionSpeed = 3;
     public GameObject pAmmo;
+    public Vector3 pStartPosition;
+    public float pShotTimer;
 
     public void ShowDebug()
     {

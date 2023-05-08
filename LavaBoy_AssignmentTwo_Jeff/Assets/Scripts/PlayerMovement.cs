@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playerData.pStartPosition = transform.position;
         playerData.pSpeedCurrent = playerData.pSpeed;
     }
 
@@ -89,17 +90,41 @@ public class PlayerMovement : MonoBehaviour
             playerOnGround = true;
             playerCanJump = true;
             Debug.Log("Touching Ground");
-            Debug.Log(collision.transform.position.x);
+            /*Debug.Log(collision.transform.position.x);
             Debug.Log(transform.position.x + 960);
             Debug.Log(collision.transform.position.y);
-            Debug.Log(transform.position.y + 540);
+            Debug.Log(transform.position.y + 540);*/
         }
         if (collision.gameObject.name == "Wall")
         {
             playerHitWall = true;
             Debug.Log("Touching WALL");
-            Debug.Log(collision.transform.position.x);
-            Debug.Log(transform.position.x + 960);
+            /*Debug.Log(collision.transform.position.x);
+            Debug.Log(transform.position.x + 960);*/
+        }
+        if (collision.gameObject.name == "Lava")
+        {
+            playerData.pHealthReductionSpeed = -20;
+            Debug.Log("Lava");
+        }
+        else if (collision.gameObject.name == "Lava" && collision.gameObject.name == "SolidGround")
+        {
+            playerData.pHealthReductionSpeed = -20;
+            Debug.Log("Lava and Wall");
+        }
+        else if (collision.gameObject.name == "Water")
+        {
+            playerData.pHealthReductionSpeed = 40;
+            Debug.Log("Water");
+        }
+        else if (collision.gameObject.name == "Water" && collision.gameObject.name == "SolidGround")
+        {
+            playerData.pHealthReductionSpeed = 40;
+            Debug.Log("Water and Wall");
+        }
+        else
+        {
+            playerData.pHealthReductionSpeed = 7.5f;
         }
     }
 
