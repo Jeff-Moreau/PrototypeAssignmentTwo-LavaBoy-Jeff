@@ -148,6 +148,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: 8a41b607c1ddc0446bf7493c0564766b, type: 2}
+  playerData: {fileID: 11400000, guid: 689dee5cab397194582c91d07899f586, type: 2}
+  thePlayer: {fileID: 0}
   enemyHealth: 0
 --- !u!95 &1657473471
 Animator:

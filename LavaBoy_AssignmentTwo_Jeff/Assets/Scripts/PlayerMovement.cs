@@ -18,12 +18,14 @@ public class PlayerMovement : MonoBehaviour
     {
         playerData.pStartPosition = transform.position;
         playerData.pSpeedCurrent = playerData.pSpeed;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-            if (Input.GetKey(KeyCode.D) && canMoveRight)
+        playerData.pCurrentPosition = transform.position;
+        if (Input.GetKey(KeyCode.D) && canMoveRight)
             {
                 transform.position += transform.right * (Time.deltaTime * playerData.pSpeedCurrent);
             }

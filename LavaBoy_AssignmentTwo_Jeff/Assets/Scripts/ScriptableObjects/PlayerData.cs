@@ -16,6 +16,7 @@ public class PlayerData : ScriptableObject
     public float pHealthReductionSpeed = 3;
     public GameObject pAmmo;
     public Vector3 pStartPosition;
+    public Vector3 pCurrentPosition;
     public float pShotTimer;
 
     public void ShowDebug()
