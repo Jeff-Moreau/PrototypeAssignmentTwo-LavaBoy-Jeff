@@ -45,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
             playerRiBo.gravityScale = -3;
         }
 
-        if (playerRiBo.gravityScale <= 0)
+        if (playerRiBo.gravityScale <= 0 && playerOnGround)
         {
             playerRiBo.gravityScale += Time.deltaTime;
         }

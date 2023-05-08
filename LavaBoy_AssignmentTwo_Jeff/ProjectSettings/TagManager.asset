@@ -9,6 +9,7 @@ TagManager:
   - Wall
   - Ground
   - Lava
+  - Spit
   layers:
   - Default
   - TransparentFX

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1354243114778022341}
   m_Layer: 0
   m_Name: LavaSpit
-  m_TagString: Untagged
+  m_TagString: Spit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
