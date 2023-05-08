@@ -14,10 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pHealthMax: 2200
   pHealthSolid: 1800
-  pHealthCurrent: 2200
+  pHealthCurrent: 2107.4187
   pCurrentDirection: 0
   pSpeed: 6
   pSpeedCurrent: 6
   pJumpForce: 650
-  pHealthReductionSpeed: 5
+  pHealthReductionSpeed: 7.5
   pAmmo: {fileID: 3531331950260346512, guid: 74dfd24696beab44f88f9c2530e9fe75, type: 3}
+  pStartPosition: {x: -12.13, y: -0.4, z: 0}
+  pShotTimer: 1

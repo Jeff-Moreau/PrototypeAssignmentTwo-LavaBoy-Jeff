@@ -17,7 +17,7 @@ public class PlayerShooting : MonoBehaviour
     {
         timer = 0;
         lavaSpit = playerData.pAmmo;
-        playerData.pShotTimer = 1.5f;
+        playerData.pShotTimer = 1;
         canShoot = true;
     }
 
@@ -32,6 +32,7 @@ public class PlayerShooting : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && canShoot == true)
         {
             Instantiate(lavaSpit, lavaSpitSpawn.position, Quaternion.identity);
+            playerData.pHealthCurrent  = playerData.pHealthCurrent - 10;
             canShoot = false;
         }
 
